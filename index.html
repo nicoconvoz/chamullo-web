@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121212">
+  <meta name="description" content="Red de comunicación de celular a celular: sin torres, sin internet, sin Wi-Fi.">
+  <title>CHAMULLO</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' rx='22' fill='%230e0e0e'/%3E%3Ccircle cx='40' cy='54' r='6' fill='%23fff'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M52 44a14 14 0 0 1 0 20'/%3E%3Cpath d='M60 36a26 26 0 0 1 0 36'/%3E%3Cpath d='M68 28a38 38 0 0 1 0 52'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap">
+  <style>
+    :root {
+      --bg: #ecece8; --surface: #fff; --soft: #f4f4f1; --ink: #121212; --muted: #686864; --line: #d9d9d3;
+      --bar: #121212; --bar-ink: #fff; --blue: #2f6fdb; --green: #1f9d43;
+      --shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 10px -4px rgba(0,0,0,.18);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { color-scheme: dark; --bg: #0f0f0f; --surface: #181817; --soft: #202020; --ink: #efefea; --muted: #9a9a94; --line: #2e2e2b; --bar: #000; --blue: #6aa2ff; --green: #44c56a; }
+    }
+    :root[data-theme="dark"] { color-scheme: dark; --bg: #0f0f0f; --surface: #181817; --soft: #202020; --ink: #efefea; --muted: #9a9a94; --line: #2e2e2b; --bar: #000; --blue: #6aa2ff; --green: #44c56a; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { background: var(--bg); color: var(--ink); font: 16px/1.45 Figtree, system-ui, sans-serif; min-height: 100vh; }
+    .bar { background: var(--bar); color: var(--bar-ink); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .bar b { font: 800 18px Figtree, sans-serif; letter-spacing: .04em; }
+    .bar small { margin-left: auto; font: 12px "JetBrains Mono", monospace; opacity: .85; }
+    main { max-width: 560px; margin: 0 auto; padding: 22px 16px 40px; }
+    .hero { text-align: center; padding: 18px 0 8px; }
+    .logo { width: 118px; height: 94px; margin: 0 auto; border-radius: 18px; background: #0e0e0e; color: #fff; display: grid; place-items: center; font: 700 58px/1 "Dancing Script", cursive; padding-top: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.5), inset 0 0 0 2px #2a2a2a; }
+    .waves { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 16px; height: 22px; }
+    .waves i { display: block; border: 2.5px solid var(--ink); border-left: 0; border-top-color: transparent; border-bottom-color: transparent; border-radius: 0 50% 50% 0; animation: wave 1.4s infinite; }
+    .waves i:nth-child(1) { width: 8px; height: 10px; } .waves i:nth-child(2) { width: 10px; height: 16px; animation-delay: .15s } .waves i:nth-child(3) { width: 12px; height: 22px; animation-delay: .3s }
+    .waves b { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); }
+    @keyframes wave { 50% { opacity: .25 } }
+    @media (prefers-reduced-motion: reduce) { .waves i { animation: none } }
+    .hero p { color: var(--muted); margin: 18px auto 0; max-width: 400px; }
+    .rule { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 15px; font-weight: 500; margin: 22px 2px 10px; }
+    .rule::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .45; }
+    .box { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden; }
+    .box.first { outline: 2px solid var(--ink); }
+    .tag { display: inline-block; background: var(--ink); color: var(--bg); font-weight: 700; font-size: 13.5px; padding: 6px 12px; border-bottom-right-radius: 8px; }
+    .in { padding: 12px 14px 14px; display: grid; gap: 10px; }
+    a.btn { display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: var(--ink); color: var(--bg); font-weight: 700; font-size: 15px; padding: 13px 16px; border-radius: 12px; box-shadow: var(--shadow); }
+    a.btn.ghost { background: var(--surface); color: var(--ink); border: 1.5px solid var(--line); box-shadow: none; }
+    a.btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    a.btn svg { width: 18px; height: 18px; flex: none; }
+    .ver { font: 13px "JetBrains Mono", monospace; color: var(--muted); text-align: center; }
+    ol, ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--muted); font-size: 14.5px; }
+    ol b, ul b { color: var(--ink); }
+    .card { display: flex; align-items: center; gap: 12px; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 9px; padding: 12px 14px; }
+    .card svg { width: 28px; height: 28px; flex: none; }
+    .card b { display: block; font-size: 15.5px; }
+    .card span { font-size: 13px; color: var(--muted); }
+    .note { font-size: 13.5px; color: var(--muted); }
+    footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 26px; }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="bar"><b>CHAMULLO</b><small>sin torres · sin internet</small></div>
+  <main>
+    <div class="hero">
+      <div class="logo" aria-hidden="true">Ch</div>
+      <div class="waves" aria-hidden="true"><b></b><i></i><i></i><i></i></div>
+      <p>Celulares que se pasan cartas a los gritos: tu mensaje salta de celular en celular hasta llegar, sin torres, sin internet y sin Wi-Fi.</p>
+    </div>
+
+    <div class="rule">Descargar</div>
+
+    <section class="box first" id="android">
+      <span class="tag">Android 8 o más nuevo</span>
+      <div class="in">
+        <a class="btn" href="chamullo-android.apk" download="chamullo-android.apk" type="application/vnd.android.package-archive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          Descargar para Android (1,3 MB)</a>
+        <div class="ver" id="ver">Última versión: …</div>
+        <ol>
+          <li>Si Chrome avisa que <b>“este tipo de archivo puede dañar el dispositivo”</b>, tocá <b>Descargar de todos modos</b>.</li>
+          <li>Abrí el archivo desde la notificación o desde <b>Archivos → Descargas</b>.</li>
+          <li>Si Android lo pide, permití <b>Instalar apps desconocidas</b> y volvé a tocar <b>Instalar</b>.</li>
+          <li>Si Play Protect pregunta, elegí <b>Instalar de todas formas</b>: la app no está en Play Store.</li>
+          <li>Al abrirla, aceptá <b>Dispositivos cercanos</b> y prendé el <b>Bluetooth</b>: CHAMULLO usa esa radio sin conectarse a nada.</li>
+        </ol>
+        <p class="note">¿Ya la tenés? Instalá la nueva encima: tus contactos y tus cartas se mantienen. La app te avisa sola cuando hay una versión nueva.</p>
+      </div>
+    </section>
+
+    <section class="box" id="iphone">
+      <span class="tag">iPhone</span>
+      <div class="in">
+        <p class="note" style="margin:0">Todavía no: Apple no deja que una app use la radio del modo en que CHAMULLO la necesita. Mientras tanto podés usar ICEBREAK desde el navegador.</p>
+        <a class="btn ghost" href="https://nicoconvoz.github.io/icebreak-web/">Abrir ICEBREAK, la red social</a>
+      </div>
+    </section>
+
+    <div class="rule">Qué hace</div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="12" r="2"/><path d="M11 9a4 4 0 0 1 0 6M14 6a8 8 0 0 1 0 12M17 3a12 12 0 0 1 0 18"/></svg><div><b>El grito</b><span>Tu celular grita las cartas al aire y los de alrededor las escuchan</span></div></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><b>Cartas cifradas</b><span>Solo las lee quien las recibe; los carteros no saben de quién ni para quién son</span></div></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg><div><b>✓✓ cuando llega</b><span>Si no hay camino, la carta espera en un bolsillo hasta que aparece uno</span></div></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM5 20a7 7 0 0 1 14 0"/></svg><div><b>Tus 16 palabras</b><span>Tu identidad: con ellas la recuperás en cualquier celular</span></div></div>
+
+    <footer>Proyecto abierto · <a href="https://github.com/nicoconvoz/CHAMULLO">código y especificaciones en GitHub</a></footer>
+  </main>
+  <script>
+    // Show the version next to the button; the app reads the same version.txt to know when to ask for an update.
+    fetch('version.txt?t=' + Date.now()).then(function (r) { return r.ok ? r.text() : ''; }).then(function (v) {
+      v = (v || '').trim();
+      if (/^\d+\.\d+\.\d+$/.test(v)) document.getElementById('ver').textContent = 'Última versión: ' + v;
+      else document.getElementById('ver').hidden = true;
+    }).catch(function () { document.getElementById('ver').hidden = true; });
+  </script>
+</body>
+</html>
