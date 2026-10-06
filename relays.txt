@@ -1,0 +1,2 @@
+# Relés de CHAMULLO para el puente por Internet: una dirección por línea (https://... o http://...:47475).
+# La app los lee sola; nadie escribe nada. Vacío: todavía no hay relé encendido.
