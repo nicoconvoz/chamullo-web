@@ -1,2 +1,2 @@
-# Relés de CHAMULLO para el puente por Internet: una dirección por línea (https://... o http://...:47475).
-# La app los lee sola; nadie escribe nada. Vacío: todavía no hay relé encendido.
+# Relés extra para el puente por Internet: uno por línea. La app ya trae relés públicos de Nostr;
+# acá se pueden sumar más (wss://...) sin actualizar la app. Nadie escribe nada en el celular.
